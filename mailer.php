@@ -9,7 +9,7 @@ require_once __DIR__.'/../constants.php';
 
 
 
-CONST SENDGRID_API_KEY = '7JcxnytgR5ym6UkX4tl9rQ';
+CONST SENDGRID_API_KEY = 'YOUR_API_KEY';
 
 class Mailer{
 
