@@ -5,11 +5,26 @@ require_once __DIR__.'/classes/broadcast.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     $broadcast_data = $_POST;
 
+    $db = Db::instance();
+    $db->where('id',$broadcast_data['email_template_id']);
+    $db->update('email_templates',[
+        'html'=>$broadcast_data['email-template-html']
+    ]);
+
+    unset($broadcast_data['email-template-html']);
+    // Update template HTML by ID
+
+
+
+
+
+
+
     $broadcast_data['creation_timestamp'] = time();
 
     // Get tags ids by names
 
-    $db = Db::instance();
+
     if (count($broadcast_data['tags']) < 1){
         die('You need to select at least one tag');
     }
