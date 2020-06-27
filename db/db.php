@@ -11,8 +11,8 @@ class Db{
 
 
 	static $host = "localhost";
-	static $username = "root";
-	static $password = "";
+	static $username = "sifoo";
+	static $password = "2byEqNgMUjKrrh9nDyGBYx";
 	static $dbname = "broadcaster";
 
 
