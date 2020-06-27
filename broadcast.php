@@ -3,23 +3,35 @@
 require_once __DIR__.'/classes/broadcast.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+
+
+
+
     $broadcast_data = $_POST;
 
+    // Update Template's HTML by ID
     $db = Db::instance();
     $db->where('id',$broadcast_data['email_template_id']);
     $db->update('email_templates',[
         'html'=>$broadcast_data['email-template-html']
     ]);
 
+    // Update User CONFIGURATION - Notice there is no validation on user authentication and this should be implemented
+    $db->where('user_id',$broadcast_data['user_id']);
+    $db->update('user',[
+       "SENDGRID_API_KEY"=>$broadcast_data['SENDGRID_API_KEY'],
+       "SMTP_WEBHOOK_URL"=>$broadcast_data['SMTP_WEBHOOK_URL'],
+    ]);
+
+
+
+
+
+
+
+
     unset($broadcast_data['email-template-html']);
-    // Update template HTML by ID
-
-
-
-
-
-
-
     $broadcast_data['creation_timestamp'] = time();
 
     // Get tags ids by names
@@ -41,10 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     // Save broadcast to database
     if ($broadcast->Insert()){
         $data = $broadcast->Start();
-
-        echo "<pre>";
-        print_r($data);
-        die ("</pre>");
+        header('location: broadcasts');
     }
 }
 else{

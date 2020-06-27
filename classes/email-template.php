@@ -14,8 +14,10 @@ class EmailTemplate extends baseClass{
     public $html;
     public $name;
     public $user_id;
+
+
     public static function GetByID($id){
-        $rawObj = Db::instance()->rawQuery('select * from email_templates where id = ? limit 1',[
+        $rawObj = Db::instance()->rawQueryOne('select * from email_templates where id = ? limit 1',[
             $id
         ]);
 
