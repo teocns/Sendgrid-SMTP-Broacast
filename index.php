@@ -38,25 +38,26 @@ $email_tags = Db::instance()->rawQuery("select tag, group_concat(email SEPARATOR
 <body class="p-3">
     <form action="broadcast.php" class="d-flex flex-column" method="post">
 
-        <div class="bordered">
+        <!--<div class="bordered">
 
 
             <h6>User configuration</h6>
 
             <label for="MAILER_METHOD_SENDGRID">Sendgrid</label>
             <input type="radio" id="MAILER_METHOD_SENDGRID" name="MAILER_METHOD_SENDGRID" value="sendgrid"/>
+
             <label for="SENDGRID_API_KEY">Sendgrid API Key</label>
-            <input type="text" id="SENDGRID_API_KEY" name="SENDGRID_API_KEY" value="<?=$user['SENDGRID_API_KEY']?>"/>
+            <input type="text" id="SENDGRID_API_KEY" name="SENDGRID_API_KEY" value="<?/*=$user['SENDGRID_API_KEY']*/?>"/>
 
             <label for="SMTP_WEBHOOK_URL">Webhook for SMTP</label>
-            <input type="text" id="SMTP_WEBHOOK_URL" name="SMTP_WEBHOOK_URL" value="<?=$user['SMTP_WEBHOOK_URL']?>"/>
+            <input type="text" id="SMTP_WEBHOOK_URL" name="SMTP_WEBHOOK_URL" value="<?/*=$user['SMTP_WEBHOOK_URL']*/?>"/>
 
 
 
 
             <label for="MAILER_METHOD_SMTP">SMTP</label>
             <input type="radio" id="MAILER_METHOD_SMTP" name="MAILER_METHOD_SMTP" value="smtp"/>
-        </div>
+        </div>-->
 
         <input type="hidden" name="email_template_id" value="<?=$email_template['id']?>">
         <label for="email-template-html">Selected email template: <?=$email_template['name']?></label>
